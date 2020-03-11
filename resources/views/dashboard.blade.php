@@ -24,16 +24,15 @@
           <div class="box-header">
               <h2 class="box-title">Sortir SP dengan kategori :</h2><br><br>
               
-              <!-- KATEGORI -->        
+              <!-- KATEGORI -->     
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default"> JENIS SP </button>
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
+                    <span>Pilih.. <span class="caret"></span></span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu" role="">
-                    @foreach($data_konbis as $d)
-                    <li><a href="#">{{ $d->jenis_sp }}</a></li>
+                    @foreach($sort as $d)
+                    <li><a href="{{ route('tembis.sort', $d->jenis_sp) }}">{{ $d->jenis_sp }}</a></li>
                     @endforeach
                   </ul>
                 </div> <br>
