@@ -27,15 +27,19 @@
               <!-- KATEGORI -->     
                 <div class="btn-group">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span>Pilih.. <span class="caret"></span></span>
+                    @if (!is_null(session('sp')))
+                      <span>{{ session('sp') }} <span class="caret"></span></span>
+                    @else
+                      <span>Pilih.. <span class="caret"></span></span>
+                    @endif
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu" role="">
-                    @foreach($sort as $d)
-                    <li><a href="{{ route('tembis.sort', $d->jenis_sp) }}">{{ $d->jenis_sp }}</a></li>
-                    @endforeach
+                    <li><a href="{{ route('tembis.sort', "induk") }}">Induk</a></li>
+                    <li><a href="{{ route('tembis.sort', "addendum") }}">addendum</a></li>
                   </ul>
-                </div> <br>
+                </div> 
+                <br>
             <!-- /.box-header -->
             @if (session('Sukses'))
               <div class="alert alert-success" role="alert">

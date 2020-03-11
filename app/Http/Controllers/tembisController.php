@@ -81,8 +81,13 @@ class tembisController extends Controller
 
     public function sort($data_id)
     {
-        $data_konbis = data_konbis::where('jenis_sp', $data_id)->get();
+        
+            $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
+        
+        
+
         $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
+        session()->put('sp', $data_id);
         return view('dashboard', compact('data_konbis', 'sort'));
     }
 }
