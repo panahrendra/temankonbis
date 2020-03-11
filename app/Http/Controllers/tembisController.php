@@ -30,7 +30,7 @@ class tembisController extends Controller
 	public function dash()
     {
     	$data_konbis = data_konbis::all();
-    	return view('dashboard', ['data_konbis' => $data_konbis]);
+        return view('dashboard', ['data_konbis' => $data_konbis]);
     }
 
     public function history()
@@ -68,6 +68,13 @@ class tembisController extends Controller
         $data_konbis->update($request->all());
         $d = data_konbis::find($data_id);
         return redirect('/dashboard/'.$d->data_id.'/edit')->with('Sukses','DATA BERHASIL DIUBAH');
+    }
+
+    public function delete($data_id)
+    {
+        $data_konbis = data_konbis::find($data_id);
+        $data_konbis->delete();
+        return redirect('/dashboard')->with('Sukses','DATA DENGAN NO. SP '.$data_konbis->no_sp.' TELAH DIHAPUS');
     }
 }
 

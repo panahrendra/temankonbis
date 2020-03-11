@@ -36,9 +36,13 @@
                     <li><a href="#">{{ $d->jenis_sp }}</a></li>
                     @endforeach
                   </ul>
-                </div>
+                </div> <br>
             <!-- /.box-header -->
-
+            @if (session('Sukses'))
+              <div class="alert alert-success" role="alert">
+                <center>{{(session('Sukses'))}}</center>
+              </div>
+            @endif
             <div class="box-body">
 <br>  
               <table id="tdash" class="table table-bordered table-hover">
@@ -75,7 +79,7 @@
                   <td>{{ $d->ket_perubahan }}</td>
                   <td>{{ $d->user }}</td>
                   <td><center><a href="/dashboard/{{$d->data_id}}/edit"><button type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a></center></td>
-                  <td><center><a href="#"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></a></center></td>
+                  <td><center><a href="/dashboard/{{$d->data_id}}/delete"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></a></center></td>
                 </tr>
                 @endforeach
                 </tbody>

@@ -118,8 +118,8 @@
       'ordering'    : false,
       'info'        : false,
       'autoWidth'   : true,
-      'aLengthMenu' : [[2, 5, 10, 20, -1], [2, 5, 10, 20, "All"]],
-      'iDisplayLength': 2
+      'aLengthMenu' : [[5, 10, 20, -1], [5, 10, 20, "All"]],
+      'iDisplayLength': 5
     })
     $('#tuser').DataTable({
       'lengthChange': true,

@@ -17,6 +17,7 @@ Route::get('/dashboard/tambah', 'tembisController@tambah');
 Route::post('/dashboard/store', 'tembisController@store');
 Route::get('/dashboard/{data_id}/edit', 'tembisController@edit');
 Route::post('/dashboard/{data_id}/update', 'tembisController@update', 'tembisController@edit');
+Route::get('/dashboard/{data_id}/delete', 'tembisController@delete');
 
 Route::get('/history', 'tembisController@history');
 
