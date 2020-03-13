@@ -6,7 +6,7 @@
       }
   </style>
     <!-- Logo -->
-    <a href="" class="logo">
+    <a href="/" class="logo">
       <span class="logo-mini"><img src="{{url('L1.png')}}" class="Latas" alt="User Image"></span>
       <span class="logo-lg"><img src="{{url('L1.png')}}" class="Latas" alt="User Image"> TEMAN KONBIS</span>
     </a>

@@ -21,20 +21,23 @@
       <div class="box">
         <div class="box-header">
             @if (session('Sukses'))
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-success" role="alert" >
                 <center>{{(session('Sukses'))}}</center>
               </div>
+            <div><br></div>
             @endif 
+            <a href="/dashboard"><button type="submit" class="btn btn-info">KEMBALI</button></a>
+            
         </div>
         <div class="box-body">
           <form method="post" action="/dashboard/{{ $data_konbis->data_id }}/update" class="form-horizontal">
             {{ csrf_field() }}
                <div class="box-body">
                   <div class="form-group">
-                      <label class="col-sm-3 control-label">No. Urut SP</label>
-                      <div class="col-sm-5">
-                        <input type="text" name="no_urut_sp" class="form-control" placeholder="" value="{{ $data_konbis->no_urut_sp }}">
-                      </div>
+                    <label class="col-sm-3 control-label">No. Urut SP</label>
+                    <div class="col-sm-5">
+                      <input type="text" name="no_urut_sp" class="form-control" placeholder="" value="{{ $data_konbis->no_urut_sp }}">
+                    </div>
                   </div>
 
                   <div class="form-group">
@@ -176,7 +179,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <a href="/dashboard"><button type="submit" class="btn btn-info">KEMBALI</button></a>
+          
         </div>
         <!-- /.box-footer-->
       </div>

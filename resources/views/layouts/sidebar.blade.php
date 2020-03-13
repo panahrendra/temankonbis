@@ -2,7 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">MENU</li>
         <li class="">
           <a href="/user">
             <i class="fa fa-user"></i><span>User</span>

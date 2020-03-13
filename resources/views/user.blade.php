@@ -23,7 +23,7 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
+      <div class="box box-info">
         <div class="box-body">
          <h3 clss="box-title">DATA USER</h3>
           <div class="box-header">
@@ -43,7 +43,7 @@
 	            			<td> : </td>
 	            			<td width="20%"><input type="text" class="form-control" name="npk" placeholder="NPK"></td>
                     <td><?php echo "<font color='white'>..</font>"; ?></td>
-                    <td><input type="text" class="form-control" name="name" placeholder="NAME"></td></td>
+                    <td><input type="text" class="form-control" name="name" placeholder="NAME"></td>
 	            		</tr>
 	            		<tr>
 	            			<td><br></td>

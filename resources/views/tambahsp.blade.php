@@ -183,6 +183,14 @@
 
                 <div class="form-group">
                   <label class="col-sm-3 control-label">Tanggal Mulai</label>
+                  <div class="col-sm-5 input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="tgl_mulai" class="form-control" id="datepicker">
+                  </div>
+                </div>
+                  <!--
                   <div class="col-sm-5">
                     <input type="text" name="tgl_mulai" class="form-control" placeholder="">
                       @if($errors->has('tgl_mulai'))
@@ -191,7 +199,20 @@
                           </div>
                       @endif
                   </div>
+                  -->
+
+
+                <!--
+                <div class="form-group">
+                <label>Date:</label>
+
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker">
                 </div>
+              </div>-->
 
                 <div class="form-group">
                   <label class="col-sm-3 control-label">Tanggal Akhir</label>

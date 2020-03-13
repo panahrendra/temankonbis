@@ -118,8 +118,11 @@
       'ordering'    : false,
       'info'        : false,
       'autoWidth'   : true,
-      'aLengthMenu' : [[5, 10, 20, -1], [5, 10, 20, "All"]],
-      'iDisplayLength': 5
+      'aLengthMenu' : [[5, 10, 20, -1], [5, 10, 20, "Semua"]],
+      'iDisplayLength': 5,
+      'language'    :{
+        'url': "Indonesian.json"
+      }
     })
     $('#tuser').DataTable({
       'lengthChange': true,
@@ -128,8 +131,22 @@
       'ordering'    : false,
       'info'        : false,
       'autoWidth'   : true,
-      'aLengthMenu' : [[3, 5, 10, 20, -1], [3, 5, 10, 20, "All"]],
+      'aLengthMenu' : [[3, 5, 10, 20, -1], [3, 5, 10, 20, "Semua"]],
       'iDisplayLength': 3
+    })
+    $('#datepicker1').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd'
+    })
+    $('#datepicker2').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd'
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true,
+      format: " yyyy",
+      viewMode: "years", 
+      minViewMode: "years"
     })
   })
 </script>

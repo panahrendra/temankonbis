@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\data_konbis;
+use App\Models\data_konbis;
+use App\Models\dt_user;
 
 class tembisController extends Controller
 {
     public function dtuser()
 	{
-		
+		/*
 		$npk='';
 		$nm='';
 		$uknm='';
@@ -22,8 +23,9 @@ class tembisController extends Controller
 				->where('usertb.user_nm','like','%'.$nm.'%')
 				->where('unit_kerja.uk_nm','like','%'.$uknm.'%')
 				->get();
-		
-		return view('user',['usertb'=>$usertb]);
+		*/
+        $usertb = dt_user::all();                
+		return view('user', ['usertb'=>$usertb]);
 	}
 
 
@@ -31,7 +33,6 @@ class tembisController extends Controller
     {
     	$data_konbis = data_konbis::all();
         $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
-        // dd($sort, );
         return view('dashboard', compact('data_konbis', 'sort'));
     }
 
@@ -47,9 +48,18 @@ class tembisController extends Controller
     	return view('report', ['data_konbis' => $data_konbis]);
     }
 
+    public function sort($data_id)
+    {
+        
+        $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
+        $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
+        session()->put('sp', $data_id);
+        return view('dashboard', compact('data_konbis', 'sort'));
+    }
+
     public function tambah()
     {
-    	return view ('tambahsp');
+    	return view ('tambahsp2');
     }
 
     public function store(Request $request)
@@ -61,7 +71,7 @@ class tembisController extends Controller
     public function edit($data_id)
     {
         $data_konbis = data_konbis::find($data_id);
-        return view('editsp',['data_konbis' => $data_konbis]);
+        return view('editsp2',['data_konbis' => $data_konbis]);
     }
 
     public function update(Request $request, $data_id)
@@ -76,20 +86,9 @@ class tembisController extends Controller
     {
         $data_konbis = data_konbis::find($data_id);
         $data_konbis->delete();
-        return redirect('/dashboard')->with('Sukses','DATA DENGAN NO. SP '.$data_konbis->no_sp.' TELAH DIHAPUS');
+        return redirect('/dashboard')->with('Sukses','DATA DENGAN NO. SP ( '.$data_konbis->no_sp.' ) TELAH DIHAPUS');
     }
 
-    public function sort($data_id)
-    {
-        
-            $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
-        
-        
-
-        $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
-        session()->put('sp', $data_id);
-        return view('dashboard', compact('data_konbis', 'sort'));
-    }
 }
 
 

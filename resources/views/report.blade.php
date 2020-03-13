@@ -24,8 +24,7 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-body">
+      <div class="box box-success">
           <div class="box-header">
               <h2 class="box-title">Sortir SP dengan kategori :</h2><br><br>
               <!-- KATEGORI -->

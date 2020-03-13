@@ -19,35 +19,34 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="box">
-        <div class="box-body">
-          <div class="box-header">
+          <div class="box box-danger">
+            <div class="box-header">
+              @if (session('Sukses'))
+                <div class="alert alert-success" role="alert">
+                  <center>{{(session('Sukses'))}}</center>
+                </div><br>
+              @endif
               <h2 class="box-title">Sortir SP dengan kategori :</h2><br><br>
               
               <!-- KATEGORI -->     
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    @if (!is_null(session('sp')))
-                      <span>{{ session('sp') }} <span class="caret"></span></span>
-                    @else
-                      <span>Pilih.. <span class="caret"></span></span>
-                    @endif
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="">
-                    <li><a href="{{ route('tembis.sort', "induk") }}">Induk</a></li>
-                    <li><a href="{{ route('tembis.sort', "addendum") }}">addendum</a></li>
-                  </ul>
-                </div> 
-                <br>
-            <!-- /.box-header -->
-            @if (session('Sukses'))
-              <div class="alert alert-success" role="alert">
-                <center>{{(session('Sukses'))}}</center>
-              </div>
-            @endif
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  @if (!is_null(session('sp')))
+                    <span>{{ session('') }} <span class="caret"></span></span>
+                  @else
+                    <span>Pilih.. <span class="caret"></span></span>
+                  @endif
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="">
+                  <li><a href="{{ route('tembis.sort', "Induk") }}">Induk</a></li>
+                  <li><a href="{{ route('tembis.sort', "Addendum") }}">Addendum</a></li>
+                </ul>
+              </div> 
+            </div>
+            
             <div class="box-body">
-<br>  
+              <br>
               <table id="tdash" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -71,7 +70,7 @@
                 @foreach($data_konbis as $d) 
                 <tr>
                   <td>{{ $no++ }}</td>
-                  <td>{{ $d->no_sp.$d->kode_sp.$d->tahun_sp }}</td>
+                  <td>{{ $d->no_sp."/".$d->kode_sp."/".$d->tahun_sp }}</td>
                   <td>{{ $d->perusahaan }}</td>
                   <td>{{ $d->jenis_sp." - ".$d->judul_sp }}</td>
                   <td>{{ $d->objek_sp }}</td>
@@ -82,20 +81,35 @@
                   <td>{{ $d->ket_perubahan }}</td>
                   <td>{{ $d->user }}</td>
                   <td><center><a href="/dashboard/{{$d->data_id}}/edit"><button type="button" class="btn btn-primary"><i class="fa fa-info-circle"></i></button></a></center></td>
-                  <td><center><a href="/dashboard/{{$d->data_id}}/delete"><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></a></center></td>
+                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger"><i class="fa fa-trash"></i></button></td>
                 </tr>
                 @endforeach
                 </tbody>
               </table>
+
+              <div class="modal modal-danger fade" id="modal-danger">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <center><label>Yakin ingin menghapus data ini ?</label></center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
+                      <a href="/dashboard/{{$d->data_id}}/delete"><button type="button" class="btn btn-outline">HAPUS</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-        </div>
+        
 
         <!-- /.box-body -->
-        <div class="box-footer">
-         <a href="/dashboard/tambah"><button type="button" class="btn btn-default"><i class="fa fa-plus"> Tambah Perjanjian</i></button></a>
+          <div class="box-footer">
+            <a href="/dashboard/tambah"><button type="button" class="btn btn-default"><i class="fa fa-plus"> Tambah Perjanjian</i></button></a>
+          </div>
+           <!-- /.box-footer-->
         </div>
-        <!-- /.box-footer-->
-      </div>
       <!-- /.box -->      
     </section>
 @endsection 
