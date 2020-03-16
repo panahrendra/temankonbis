@@ -249,15 +249,33 @@
                     <td><br></td>
                   </tr>
 
-                  <tr>
-                    <td><?php echo "<font color='white'>..</font>"; ?></td>
-                    <td><?php echo "<font color='white'>..</font>"; ?></td>
-                    <td><button type="submit" class="btn btn-info">EDIT</button></td>
-                  </tr>
             </table>
 
+            <table width="50%">
+
+                  <tr>
+                    <td class="col-sm-4" id="iya"><?php echo "<font color='white'></font>"; ?></td>
+                    <td><?php echo "<font color='white'>...</font>"; ?></td>
+                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">EDIT</button></td>
+                  </tr>
+            </table>
+            
+              <div class="modal modal-info fade" id="modal-info">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <center><label>Yakin ingin mengedit data ini ?</label></center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
+                      <button type="submit" class="btn btn-outline">EDIT</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
           </form>
-		</div>
+		    </div>
       </div>
 
 	  <div class="box-footer">

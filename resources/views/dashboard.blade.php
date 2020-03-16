@@ -32,7 +32,7 @@
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                   @if (!is_null(session('sp')))
-                    <span>{{ session('') }} <span class="caret"></span></span>
+                    <span>{{ session('sp') }} <span class="caret"></span></span>
                   @else
                     <span>Pilih.. <span class="caret"></span></span>
                   @endif
