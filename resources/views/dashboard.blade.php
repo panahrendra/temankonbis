@@ -31,11 +31,7 @@
               <!-- KATEGORI -->     
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  @if (!is_null(session('sp')))
-                    <span>{{ session('sp') }} <span class="caret"></span></span>
-                  @else
                     <span>Pilih.. <span class="caret"></span></span>
-                  @endif
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="">
