@@ -32,8 +32,9 @@ class tembisController extends Controller
 	public function dash()
     {
     	$data_konbis = data_konbis::all();
-        $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
-        return view('dashboard', compact('data_konbis', 'sort'));
+        $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
+        $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
+        return view('dashboard', compact('data_konbis', 'sortsksp'));
     }
 
     public function history()
@@ -48,12 +49,20 @@ class tembisController extends Controller
     	return view('report', ['data_konbis' => $data_konbis]);
     }
 
-    public function sort($data_id)
+    public function sortjsp($data_id)
     {
         
         $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
         $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         return view('dashboard', compact('data_konbis', 'sort'));
+    }
+
+    public function sortsksp($data_id)
+    {
+        
+        $data_konbis = data_konbis::where('skema_sp', $data_id)->get();
+        $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
+        return view('dashboard', compact('data_konbis', 'sortsksp'));
     }
 
     public function tambah()

@@ -13,6 +13,9 @@
         #tdash{
           font-size: smaller;
         }
+        #tidak{
+          text-align: center;
+        }
     </style>
 
     <!-- Main content -->
@@ -35,10 +38,24 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="">
-                  <li><a href="{{ route('tembis.sort', "Induk") }}">Induk</a></li>
-                  <li><a href="{{ route('tembis.sort', "Addendum") }}">Addendum</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', "Induk") }}">Induk</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', "Addendum") }}">Addendum</a></li>
                 </ul>
-              </div> 
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span>Skema SP <span class="caret"></span></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="">
+                  @foreach($sortsksp as $d )
+                    <li><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></li>
+                  @endforeach
+                </ul>
+              </div>
+              
+
             </div>
             
             <div class="box-body">
@@ -46,19 +63,19 @@
               <table id="tdash" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th><center>NO</center></th>
-                  <th><center>NO. SP</center></th>
-                  <th><center>PERUSAHAAN INSTANSI</center></th>
-                  <th><center>JUDUL PERJANJIAN</center></th>
-                  <th><center>OBJEK PERJANJIAN</center></th>
-                  <th><center>LOKASI OBJEK PERJANJIAN</center></th>
-                  <th><center>NILAI PERJANJIAN</center></th>
-                  <th><center>TANGGAL MULAI</center></th>
-                  <th><center>TANGGAL AKHIR</center></th>
-                  <th><center>KETERANGAN PERUBAHAN ISI</center></th>
-                  <th><center>USER</center></th>
-                  <th><center>OPSI</center></th>
-                  <th><center>HAPUS</center></th>
+                  <th id="tidak">NO</th>
+                  <th id="tidak">NO. SP</th>
+                  <th id="tidak">PERUSAHAAN INSTANSI</th>
+                  <th id="tidak">JUDUL PERJANJIAN</th>
+                  <th id="tidak">OBJEK PERJANJIAN</th>
+                  <th id="tidak">LOKASI OBJEK PERJANJIAN</th>
+                  <th id="tidak">NILAI PERJANJIAN</th>
+                  <th id="tidak">TANGGAL MULAI</th>
+                  <th id="tidak">TANGGAL AKHIR</th>
+                  <th id="tidak">KETERANGAN PERUBAHAN ISI</th>
+                  <th id="tidak">USER</th>
+                  <th id="tidak">OPSI</th>
+                  <th id="tidak">HAPUS</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -68,7 +85,7 @@
                   <td>{{ $no++ }}</td>
                   <td>{{ $d->no_sp."/".$d->kode_sp."/".$d->tahun_sp }}</td>
                   <td>{{ $d->perusahaan }}</td>
-                  <td>{{ $d->jenis_sp." - ".$d->judul_sp }}</td>
+                  <td>{{ $d->jenis_sp."-".$d->judul_sp }}</td>
                   <td>{{ $d->objek_sp }}</td>
                   <td>{{ $d->lokasi_obj_sp }}</td>
                   <td>{{ $d->nilai_formula."/".$d->nilai_fix }}</td>

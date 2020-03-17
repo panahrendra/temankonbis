@@ -19,7 +19,8 @@ Route::get('/dashboard/{data_id}/edit', 'tembisController@edit');
 Route::post('/dashboard/{data_id}/update', 'tembisController@update');
 Route::get('/dashboard/{data_id}/delete', 'tembisController@delete');
 
-Route::get('/dashboard/{data_id}', 'tembisController@sort')->name('tembis.sort');
+Route::get('/dashboard/{data_id}', 'tembisController@sortsksp')->name('tembis.sortsksp');
+Route::get('/dashboard/{data_id}', 'tembisController@sortjsp')->name('tembis.sortjsp');
 
 
 Route::get('/history', 'tembisController@history');
@@ -27,14 +28,6 @@ Route::get('/history', 'tembisController@history');
 Route::get('/report', 'tembisController@report');
 
 Route::get('/user', 'tembisController@dtuser');
-
-/*Route::get('/history', function () {
-    return view('history');
-});
-
-Route::get('/report', function () {
-    return view('report');
-});*/
 
 Route::get('/approve', function () {
     return view('approve');
