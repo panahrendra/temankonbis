@@ -50,8 +50,8 @@
                         <div class="form-group">
                           <label>Jenis Surat Perjanjian</label>
                           <select class="form-control">
-                            <option><a href="{{ route('tembis.sortjsp', 'Induk') }}">Induk</a></option>
-                            <option><a href="{{ route('tembis.sortjsp', 'Addendum') }}">Addendum</a></option>
+                            <option>Induk</option>
+                            <option>Addendum<</option>
                           </select>
                         </div>
 
@@ -59,7 +59,7 @@
                           <label>Skema Surat Perjanjian</label>
                           <select class="form-control">
                             @foreach($sortsksp as $d )
-                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></option>
+                            <option>{{ $d->skema_sp }}</option>
                             @endforeach
                           </select>
                         </div>
@@ -68,7 +68,7 @@
                           <label>Kategori Objek Kerjasama</label>
                           <select class="form-control">
                             @foreach($sortkas as $d )
-                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->kategori_aset }}</a></option>
+                            <option>{{ $d->kategori_aset }}</option>
                             @endforeach
                           </select>
                         </div>
@@ -77,7 +77,7 @@
                           <label>Lokasi</label>
                           <select class="form-control">
                             @foreach($sortlosp as $d )
-                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->lokasi_obj_sp }}</a></option>
+                            <option>{{ $d->lokasi_obj_sp }}</option>
                             @endforeach
                           </select>
                         </div>
@@ -86,7 +86,7 @@
                           <label>User</label>
                           <select class="form-control">
                             @foreach($sortuser as $d )
-                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->user }}</a></option>
+                            <option>{{ $d->user }}</option>
                             @endforeach
                           </select>
                         </div>  
