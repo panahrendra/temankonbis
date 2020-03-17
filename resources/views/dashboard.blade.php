@@ -31,15 +31,84 @@
               @endif
               <h2 class="box-title">Sortir SP dengan kategori :</h2><br><br>
               
+
+
+              <div class="btn-group">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-primary">CARI</button>
+              </div>
+
+              <div class="modal modal-primary fade" id="modal-primary">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Sortir Kategori</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" action="">
+                        <div class="form-group">
+                          <label>Jenis Surat Perjanjian</label>
+                          <select class="form-control">
+                            <option><a href="{{ route('tembis.sortjsp', 'Induk') }}">Induk</a></option>
+                            <option><a href="{{ route('tembis.sortjsp', 'Addendum') }}">Addendum</a></option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Skema Surat Perjanjian</label>
+                          <select class="form-control">
+                            @foreach($sortsksp as $d )
+                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></option>
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Kategori Objek Kerjasama</label>
+                          <select class="form-control">
+                            @foreach($sortkas as $d )
+                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->kategori_aset }}</a></option>
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label>Lokasi</label>
+                          <select class="form-control">
+                            @foreach($sortlosp as $d )
+                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->lokasi_obj_sp }}</a></option>
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label>User</label>
+                          <select class="form-control">
+                            @foreach($sortuser as $d )
+                            <option><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->user }}</a></option>
+                            @endforeach
+                          </select>
+                        </div>  
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">TUTUP</button>
+                      <button type="button" class="btn btn-outline">CARI</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- KATEGORI -->     
               <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span>Pilih.. <span class="caret"></span></span>
+                    <span>Jenis SP <span class="caret"></span></span>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="">
-                  <li><a href="{{ route('tembis.sortjsp', "Induk") }}">Induk</a></li>
-                  <li><a href="{{ route('tembis.sortjsp', "Addendum") }}">Addendum</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', 'Induk') }}">Induk</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', 'Addendum') }}">Addendum</a></li>
                 </ul>
               </div>
 
@@ -53,6 +122,10 @@
                     <li><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></li>
                   @endforeach
                 </ul>
+              </div>
+
+              <div class="btn-group">
+                <a href="/" class="btn bg-red color-palette">Hapus Sortir</a>
               </div>
               
 
