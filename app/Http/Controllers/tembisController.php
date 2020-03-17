@@ -31,10 +31,14 @@ class tembisController extends Controller
 
     public function dash()
     {
+        session()->flush();
         $data_konbis = data_konbis::all();
         $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
-        return view('dashboard', compact('data_konbis', 'sortsksp'));
+        $sortkas = data_konbis::select('kategori_aset')->groupBy('kategori_aset')->get();
+        $sortlosp = data_konbis::select('lokasi_obj_sp')->groupBy('lokasi_obj_sp')->get();
+        $sortuser = data_konbis::select('user')->groupBy('user')->get();
+        return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp', 'sortkas', 'sortlosp', 'sortuser'));
     }
 
     public function history()
@@ -50,19 +54,36 @@ class tembisController extends Controller
     }
 
     public function sortjsp($data_id)
-    {
-        
-        $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
-        $sort = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
-        return view('dashboard', compact('data_konbis', 'sort'));
+    {   
+        if (!is_null(session('sksp')))
+        {
+            $sksp = session('sksp');
+            $data_konbis = data_konbis::where('jenis_sp', 'LIKE', $sksp . '%')->where('skema_sp', 'LIKE', $data_id . '%')->get();
+            session()->flashInput(['jsp' => $data_id]);
+        }else{
+            $data_konbis = data_konbis::where('jenis_sp', 'LIKE',$data_id . '%')->get();
+            session()->flashInput(['jsp' => $data_id]);    
+        }
+        $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
+        $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
+        return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp'));
     }
 
     public function sortsksp($data_id)
     {
-        
-        $data_konbis = data_konbis::where('skema_sp', $data_id)->get();
+        if (!is_null(session('jsp')))
+        {
+            $jsp = session('jsp');
+            $data_konbis = data_konbis::where('skema_sp', 'LIKE', $jsp . '%')->where('skema_sp', 'LIKE', $data_id . '%')->get();
+            session()->flashInput(['sksp' => $data_id]);
+        }else{
+            $data_konbis = data_konbis::where('skema_sp', 'LIKE',$data_id . '%')->get();
+            session()->flashInput(['sksp' => $data_id]);    
+        }
+
+        $sortjsp = data_konbis::select('jenis_sp')->groupBy('jenis_sp')->get();
         $sortsksp = data_konbis::select('skema_sp')->groupBy('skema_sp')->get();
-        return view('dashboard', compact('data_konbis', 'sortsksp'));
+        return view('dashboard', compact('data_konbis', 'sortsksp', 'sortjsp'));
     }
 
     public function tambah()
