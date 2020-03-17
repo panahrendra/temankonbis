@@ -38,8 +38,8 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="">
-                  <li><a href="{{ route('tembis.sortjsp', "Induk") }}">Induk</a></li>
-                  <li><a href="{{ route('tembis.sortjsp', "Addendum") }}">Addendum</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', 'Induk') }}">Induk</a></li>
+                  <li><a href="{{ route('tembis.sortjsp', 'Addendum') }}">Addendum</a></li>
                 </ul>
               </div>
 
@@ -53,6 +53,10 @@
                     <li><a href="{{ route('tembis.sortsksp', $d->skema_sp) }}">{{ $d->skema_sp }}</a></li>
                   @endforeach
                 </ul>
+              </div>
+
+              <div class="btn-group">
+                <a href="/" class="btn btn-danger">Hapus Sortir</a>
               </div>
               
 
